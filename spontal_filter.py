@@ -18,14 +18,13 @@ def main():
         FO_START = float(point.find("FO_START").text)                   #child[13].text
         TOP_HZ = float(point.find("TOP_HZ").text)                       #child[7].text
         BOTTOM_HZ = float(point.find("BOTTOM_HZ").text)                 #child[5].text
+        if FO_END > BOTTOM_HZ and FO_START < TOP_HZ:
+            tree.write("spontal_filtered.xml")
 
-
-        if FO_END < BOTTOM_HZ or FO_END > TOP_HZ:
+        if FO_END < BOTTOM_HZ or FO_START > TOP_HZ:
             root.remove(point)
         if FO_START > TOP_HZ or FO_START < BOTTOM_HZ:
             root.remove(point)
-        else:
-            tree.write("spontal_filtered.xml")
 
 
             
