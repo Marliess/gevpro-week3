@@ -5,9 +5,10 @@ import xml.etree.ElementTree as ET
 
 """
 1. corpus inlezen
-2. datapoints controleren
-3. foutieve datapoints verwijderen
-4. corpus naar bestand schrijven
+2. variabelen de waardes meegeven die ik wil controleren
+3. datapoints controleren
+4. foutieve datapoints verwijderen
+5. corpus naar bestand schrijven
 """
 
 def main():
@@ -23,8 +24,6 @@ def main():
         if FO_START > TOP_HZ:
             root.remove(POINT)
     tree.write("spontal_filtered.xml")
-
-
 
 
             
