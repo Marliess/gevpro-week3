@@ -13,18 +13,18 @@ import xml.etree.ElementTree as ET
 def main():
     tree = ET.parse("spontal.xml")
     root = tree.getroot()
-    for point in root.findall("point"):
-        FO_END = float(point.find("FO_END").text)                       #child[12].text
-        FO_START = float(point.find("FO_START").text)                   #child[13].text
-        TOP_HZ = float(point.find("TOP_HZ").text)                       #child[7].text
-        BOTTOM_HZ = float(point.find("BOTTOM_HZ").text)                 #child[5].text
-        if FO_END > BOTTOM_HZ and FO_START < TOP_HZ:
-            tree.write("spontal_filtered.xml")
+    for POINT in root.findall("POINT"):
+        FO_END = float(POINT.find("F0_END").text)   
+        FO_START = float(POINT.find("F0_START").text)
+        TOP_HZ = float(POINT.find("TOP_HZ").text)       
+        BOTTOM_HZ = float(POINT.find("BOTTOM_HZ").text)
+        if FO_END < BOTTOM_HZ:
+            root.remove(POINT)
+        if FO_START > TOP_HZ:
+            root.remove(POINT)
+    tree.write("spontal_filtered.xml")
 
-        if FO_END < BOTTOM_HZ or FO_START > TOP_HZ:
-            root.remove(point)
-        if FO_START > TOP_HZ or FO_START < BOTTOM_HZ:
-            root.remove(point)
+
 
 
             
