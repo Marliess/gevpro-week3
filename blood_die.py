@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import sys
+import urllib
 import json
+
 
 """
 1. .json inlezen
@@ -16,5 +18,11 @@ Bestand opslaan: json.dump()
 
 """
 
+def main():
+    data = [] 
+    url = open("blood-die.json")
+    j = json.load(url)
+    print(j[0])
 
-    
+if __name__ == "__main__":
+    main()
