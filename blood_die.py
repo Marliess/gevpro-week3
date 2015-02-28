@@ -26,10 +26,10 @@ def main():
     for line in j:
         blood = ((line)[2])
         die = ((line)[3])
-        print(blood,"______", die)
         if blood == die:
-            data.append(line)
-    print(data)
+            print(blood,"______",die)
+            #data.append(line)
+    #print(data)
 
 if __name__ == "__main__":
     main()
