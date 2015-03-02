@@ -21,15 +21,15 @@ Bestand opslaan: json.dump()
 
 def main():
     url = open("blood-die.json")
-    j = json.load(url)
-    data = [] 
-    #data = [(for line in j
+    j = json.load(url) 
+    data = [print(line) for line in j if ((line)[2]) == ((line)[3])]
+    """
     for line in j:
         #print(((line)[2]))              # blood = ((line)[2])
         #print(((line)[3]))              # die = ((line)[3])
         if ((line)[2]) == ((line)[3]):
             print(blood,"______",die)
-            data.append(line)
+            data.append(line)"""
     print(data)
 
 if __name__ == "__main__":
