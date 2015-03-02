@@ -3,6 +3,7 @@
 import sys
 import urllib
 import json
+from collections import namedtuple
 
 
 """
@@ -24,12 +25,12 @@ def main():
     data = [] 
     #data = [(for line in j
     for line in j:
-        blood = ((line)[2])
-        die = ((line)[3])
-        if blood == die:
+        #print(((line)[2]))              # blood = ((line)[2])
+        #print(((line)[3]))              # die = ((line)[3])
+        if ((line)[2]) == ((line)[3]):
             print(blood,"______",die)
-            #data.append(line)
-    #print(data)
+            data.append(line)
+    print(data)
 
 if __name__ == "__main__":
     main()
