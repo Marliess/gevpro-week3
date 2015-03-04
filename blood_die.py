@@ -1,36 +1,26 @@
 #!/usr/bin/env python
 
 import sys
-import urllib
 import json
 from collections import namedtuple
 
 
-"""
-1. .json inlezen
-2. lijst maken van alle talen en hun classificaties waar tenminste
-    een van de woorden voor "bloed" identiek is aan een van de
-    woorden voor "sterven"
-3. List comprehension gebruiken voor lijst van resultaten
-4. elk element in de lijst moet een named tuple zijn
-
-Bestand openen: json.load()
-Bestand opslaan: json.dump()
-
-"""
-
 def main():
-    url = open("blood-die.json")
-    j = json.load(url) 
-    data = [print(line) for line in j if ((line)[2]) == ((line)[3])]
-    """
-    for line in j:
-        #print(((line)[2]))              # blood = ((line)[2])
-        #print(((line)[3]))              # die = ((line)[3])
-        if ((line)[2]) == ((line)[3]):
-            print(blood,"______",die)
-            data.append(line)"""
-    print(data)
-
+    """Json inlezen"""
+    data = open("blood-die.json")
+    j = json.load(data)
+    dataList = []
+    """Namedtuple gemaakt met de elementen in het json bestand"""
+    landenlijst = namedtuple("Land","taal,classificatie,bloed,sterf")
+    for lijst in j:
+        land = lijst[0]
+        classificatie = lijst[1]
+        bloeden = lijst[2].split(",")
+        sterven = lijst[3].split(",")
+        """List comprehension van alle talen en hun classificaties waar tenminste
+    1 woord voor "bloed" gelijk is aan tenminste 1 woord voor "sterven" """
+        [dataList.append(landenlijst(land,classificatie,bloeden,sterven)) for bloed in bloeden if bloed in sterven]
+    print(dataList)
+    
 if __name__ == "__main__":
     main()
